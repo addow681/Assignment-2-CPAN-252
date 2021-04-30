@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Store</title>
+</h:head>
+<h:body>
+    <div>
+        <h:form id="Inventory" >
+            <h:dataTable value="#{inventoryAppBean.store.inventory}" var="inventory">
+                <h:column headerText="Name">
+                    <h:outputText value="#{inventory.name}"/>
+                </h:column>
+                <h:column headerText="Sport">
+                    <h:outputText value="#{inventory.sport}"/>
+                </h:column>
+                <h:column headerText="Price Per Unit">
+                    <h:outputText value="#{inventory.pricePerUnit}"/>
+                </h:column>
+            </h:dataTable>
+            <h:column headerText="Quantity">
+                <h:outputText value="#{inventory.quantity}"/>
+            </h:column>
+            <h:column headerText="Time When Added">
+                <h:outputText value="#{inventory.added}"/>
+            </h:column>
+            <h:column headerText="Time When Updated">
+                <h:outputText value="#{inventory.updated}"/>
+            </h:column>
+        </h:form>
+
+        <h3>Add</h3>
+        <h:form id="add">
+            <div class="form">
+                <label for="name">Name</label>
+                <h:inputText id="name" value="#{inventoryAppBean.inventory.name}"/>
+            </div>
+            <div class="form">
+                <label for="sport">Sport</label>
+                <h:inputText id="sport" value="#{inventoryAppBean.inventory.sport}">
+
+                </h:inputText>
+            </div>
+            <div class="form">
+                <label for="quantity">Quantity</label>
+                <h:inputText id="quantity"  value="#{inventoryAppBean.inventory.quantity}">
+
+                </h:inputText>
+            </div>
+            <div class="form">
+                <label for="unitprice">Price Per Unit</label>
+                <h:inputText id="unitprice" value="#{inventoryAppBean.inventory.pricePerUnit}">
+
+                </h:inputText>
+            </div>
+            <h:commandButton id="button"  value="Add">
+                <f:ajax execute="@form" render="@all" listener="#{inventoryAppBean.addInventory}"/>
+            </h:commandButton>
+        </h:form>
+        <hr/>
+        </div>
+    </h:body>
+</html>
+
+

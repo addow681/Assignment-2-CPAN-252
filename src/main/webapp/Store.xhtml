@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Store</title>
+</h:head>
+<h:body>
+    <div class="storeClass">
+        <h3>List</h3>
+        <h:form id="frm">
+            <div class="form">
+                <label for="name">Store Name</label>
+                <h:inputText id="name"  value="#{inventoryAppBean.store.name}"
+                             required="true" requiredMessage="Please enter name"/>
+            </div>
+            <div class="form">
+                <label for="location">Location</label>
+                <h:inputText id="location"  value="#{inventoryAppBean.store.location}"
+                             required="true" requiredMessage="please enter location"/>
+            </div>
+            <h:commandButton id="button" actionListener="#{inventoryAppBean.createInventory}"
+                             value="Add">
+            </h:commandButton>
+        </h:form>
+
+
+
+
+        <h:dataTable value="#{inventoryAppBean.stores}" var="store" >
+            <h:column headerText="store">
+                <h:outputText value="#{store.name}"/>
+            </h:column>
+            <h:column headerText="location">
+                <h:outputText value="#{store.location}"/>
+            </h:column>
+            <h:column headerText="products">
+                <h:outputLink value="products.xhtml"><h:outputText value="products" />
+                <f:param name="storeId" value="#{store.id}" />
+                </h:outputLink>
+            </h:column>
+        </h:dataTable>
+    </div>
+</h:body>
+</html>
